@@ -6,6 +6,7 @@ require (
 	github.com/fsnotify/fsnotify v1.7.0
 	github.com/fvbock/endless v0.0.0-20170109170031-447134032cb6
 	github.com/gin-gonic/gin v1.10.0
+	github.com/jinzhu/copier v0.4.0
 	github.com/spf13/viper v1.18.2
 	github.com/unrolled/secure v1.14.0
 	go.uber.org/zap v1.27.0

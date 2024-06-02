@@ -39,6 +39,8 @@ func Routers() *gin.Engine {
 	mallRouter := router.RouterGroupApp.Mall
 	MallGroup := Router.Group("api")
 	
+	mallRouter.InitMallUserRouter(MallGroup)
+
 
 	global.GVA_LOG.Info("router register success")
 	return Router
