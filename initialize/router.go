@@ -23,6 +23,7 @@ func Routers() *gin.Engine {
 	//商城后管路由
 	manageRouter := router.RouterGroupApp.Manage
 	ManageGroup := Router.Group("manage-api")
+	manageRouter.InitManageAdminUserRouter(ManageGroup)
 
 
 	
