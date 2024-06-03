@@ -28,7 +28,7 @@ func (m *MallUserService) RegisterUser(req mallReq.RegisterUserParam) (err error
 	return global.GVA_DB.Create(&mall.MallUser{
 		LoginName:     req.LoginName,
 		PasswordMd5:   utils.MD5V([]byte(req.Password)),
-		IntroduceSign: "随新所欲，蜂富多彩",
+		IntroduceSign: "新人",
 		CreateTime:    common.JSONTime{Time: time.Now()},
 	}).Error
 

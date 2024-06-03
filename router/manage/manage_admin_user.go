@@ -11,8 +11,8 @@ type ManageAdminUserRouter struct {
 }
 
 func (r *ManageAdminUserRouter) InitManageAdminUserRouter(Router *gin.RouterGroup) {
-	mallAdminUserRouter := Router.Group("v1").Use(middleware.AdminJWTAuth())
-	mallAdminUserWithoutRouter := Router.Group("v1")
+	mallAdminUserRouter := Router.Use(middleware.AdminJWTAuth())
+	mallAdminUserWithoutRouter := Router
 	var mallAdminUserApi =api.ApiGroupApp.ManageApiGroup.ManageAdminUserApi
 	{
 		mallAdminUserRouter.POST("createMallAdminUser", mallAdminUserApi.CreateAdminUser) // 新建MallAdminUser

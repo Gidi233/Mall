@@ -11,6 +11,7 @@ import (
 var manageAdminUserTokenService = service.ServiceGroupApp.ManageServiceGroup.ManageAdminUserTokenService
 var mallUserTokenService = service.ServiceGroupApp.MallServiceGroup.MallUserTokenService
 
+// TODO:换成真的JWT
 func AdminJWTAuth() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		token := c.Request.Header.Get("token")
@@ -56,10 +57,10 @@ func UserJWTAuth() gin.HandlerFunc {
 		if time.Now().After(mallUserToken.ExpireTime) {
 			response.FailWithDetailed(nil, "授权已过期", c)
 			err = mallUserTokenService.DeleteMallUserToken(token)
+			c.Abort()
 			if err != nil {
 				return
 			}
-			c.Abort()
 			return
 		}
 		c.Next()

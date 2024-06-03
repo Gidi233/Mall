@@ -11,8 +11,8 @@ type MallUserRouter struct {
 }
 
 func (m *MallUserRouter) InitMallUserRouter(Router *gin.RouterGroup) {
-	mallUserRouter := Router.Group("v1").Use(middleware.UserJWTAuth())
-	userRouter := Router.Group("v1")
+	mallUserRouter := Router.Use(middleware.UserJWTAuth())
+	userRouter := Router
 	var mallUserApi = api.ApiGroupApp.MallApiGroup.MallUserApi
 	{
 		mallUserRouter.PUT("/user/info", mallUserApi.UserInfoUpdate) //修改用户信息
