@@ -44,6 +44,8 @@ func Routers() *gin.Engine {
 	mallRouter.InitMallGoodsInfoIndexRouter(MallGroup)
 	mallRouter.InitMallGoodsCategoryIndexRouter(MallGroup)
 	mallRouter.InitMallUserAddressRouter(MallGroup)
+	mallRouter.InitMallShopCartRouter(MallGroup)
+
 
 
 
