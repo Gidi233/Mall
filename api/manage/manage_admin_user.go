@@ -2,6 +2,7 @@ package manage
 
 import (
 	"Mall/global"
+	"Mall/model/file"
 	"Mall/model/common/request"
 	"Mall/model/common/response"
 	"Mall/model/manage"
@@ -132,3 +133,21 @@ func (m *ManageAdminUserApi) LockUser(c *gin.Context) {
 }
 
 // TODO:UploadFile 上传单图
+func (m *ManageAdminUserApi) UploadFile(c *gin.Context) {
+	var file file.FileUploadAndDownload
+	noSave := c.DefaultQuery("noSave", "0")
+	_, header, err := c.Request.FormFile("file")
+	if err != nil {
+		global.GVA_LOG.Error("接收文件失败!", zap.Error(err))
+		response.FailWithMessage("接收文件失败", c)
+		return
+	}
+	err, file = fileUploadAndDownloadService.UploadFile(header, noSave) // 文件上传后拿到文件路径
+	if err != nil {
+		global.GVA_LOG.Error("修改数据库链接失败!", zap.Error(err))
+		response.FailWithMessage("修改数据库链接失败", c)
+		return
+	}
+	//这里直接使用本地的url
+	response.OkWithData("http://localhost:8888/"+file.Url, c)
+}
