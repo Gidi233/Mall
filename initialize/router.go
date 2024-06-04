@@ -15,7 +15,7 @@ func Routers() *gin.Engine {
 	// https
 	// Router.Use(middleware.LoadTls())
 	// global.GVA_LOG.Info("use middleware secure")
-	
+
 	// 跨域、设置http协议
 	Router.Use(middleware.Cors())
 	global.GVA_LOG.Info("use middleware cors")
@@ -28,7 +28,6 @@ func Routers() *gin.Engine {
 
 	
 
-
 	// 健康监测
 	PublicGroup := Router.Group("")
 	PublicGroup.GET("/health", func(c *gin.Context) {
@@ -38,17 +37,14 @@ func Routers() *gin.Engine {
 	//商城前端路由
 	mallRouter := router.RouterGroupApp.Mall
 	MallGroup := Router.Group("api")
-	
+
 	mallRouter.InitMallUserRouter(MallGroup)
 	mallRouter.InitMallCarouselIndexRouter(MallGroup)
 	mallRouter.InitMallGoodsInfoIndexRouter(MallGroup)
 	mallRouter.InitMallGoodsCategoryIndexRouter(MallGroup)
 	mallRouter.InitMallUserAddressRouter(MallGroup)
 	mallRouter.InitMallShopCartRouter(MallGroup)
-
-
-
-
+	mallRouter.InitMallOrderRouter(MallGroup)
 
 	global.GVA_LOG.Info("router register success")
 	return Router

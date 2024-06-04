@@ -9,6 +9,7 @@ type MallGroup struct {
 	MallUserApi
 	MallUserAddressApi
 	MallShopCartApi
+	MallOrderApi
 }
 
 var mallCarouselService = service.ServiceGroupApp.MallServiceGroup.MallCarouselService
@@ -19,3 +20,4 @@ var mallUserTokenService = service.ServiceGroupApp.MallServiceGroup.MallUserToke
 var mallUserService = service.ServiceGroupApp.MallServiceGroup.MallUserService
 var mallUserAddressService = service.ServiceGroupApp.MallServiceGroup.MallUserAddressService
 var mallShopCartService = service.ServiceGroupApp.MallServiceGroup.MallShopCartService
+var mallOrderService = service.ServiceGroupApp.MallServiceGroup.MallOrderService
