@@ -7,4 +7,5 @@ type MallServiceGroup struct {
 	MallGoodsCategoryService
 	MallUserTokenService
 	MallUserService
+	MallUserAddressService
 }
